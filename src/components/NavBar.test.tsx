@@ -9,6 +9,18 @@ describe("NavBar", () => {
 
     expect(NavBarLogo).toBeInTheDocument();
   });
+  it("Tabs Rendering", () =>{
+    const {getByRole} = render(<NavBar/>);
+    const NavBarTabs = getByRole("navigation");
+
+    expect(NavBarTabs).toBeInTheDocument()
+  })
+
+  it("Icons Renderin", () => {
+    const {getByAltText} = render(<NavBar/>);
+    const NavBarIcons = getByAltText(/icons/i)
+    expect(NavBarIcons).toBeInTheDocument()
+  })
 });
 
 // test("links renders", () => {
