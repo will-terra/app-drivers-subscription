@@ -117,6 +117,7 @@ const RideForm = (props: Props) => {
                   {...label}
                   checked={checked}
                   onChange={handleChange}
+                  onClick={handleChange}
                 />
               </Box>
               {checked ? <IconsRadio /> : null}

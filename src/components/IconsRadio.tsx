@@ -13,18 +13,26 @@ type Props = {};
 const IconsRadio = (props: Props) => {
   const IconsAndTypes = [
     { icon: "sedan-icon.svg", type: "Sedan" },
-    { icon: "suv-van-icon.svg", type: "SUV/Van" },
+    { icon: "suv-van-icon.svg", type: "SUV /Van" },
     { icon: "semy-luxury-icon.svg", type: "Semy Luxury" },
     { icon: "luxury-car-icon.svg", type: "Luxury Car" },
   ];
 
+  const [selectedValue, setSelectedValue] = React.useState("Sedan");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // event.preventDefault();
+    setSelectedValue(event.target.value);
+  };
+
   return (
     <Box className="flex ">
       <RadioGroup
-        aria-label="platform"
-        defaultValue="Sedan"
+        aria-label="Your car type select"
+        defaultValue={selectedValue}
         overlay
-        name="platform"
+        name="your-car-type"
+        // onClick={handleChange}
         sx={{
           flexDirection: "row",
           gap: 2,
@@ -44,43 +52,46 @@ const IconsRadio = (props: Props) => {
               right: "-8px",
               bgcolor: "background.surface",
               borderRadius: "50%",
+              color: "#FBA403",
             },
           },
         }}
       >
         <Box className="flex flex-col">
-        <FormLabel className="pb-4 text-laranja font-medium text-xl">
-          Select your car type
-        </FormLabel>
-        <Box className='flex flex-row gap-5'>
-          {IconsAndTypes.map((value) => (
-            <Sheet
-              className="bg-cinzaForm"
-              key={value.type}
-              variant="outlined"
-              sx={{
-                borderRadius: "md",
+          <FormLabel className="pb-4 text-laranja font-medium text-xl">
+            Select your car type
+          </FormLabel>
+          <Box className="flex flex-row gap-5">
+            {IconsAndTypes.map((value) => (
+              <Sheet
+                component="label"
+                className="bg-cinzaForm w-[147px] h-[100px] "
+                key={value.type}
+                variant="outlined"
+                onClick={handleChange}
+                sx={{
+                  borderRadius: "md",
 
-                boxShadow: "sm",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: 1.5,
-                p: 2,
-                minWidth: 120,
-              }}
-            >
-              <Radio
-                id={value.type}
-                value={value.type}
-                checkedIcon={<CheckCircleRoundedIcon />}
-              />
-              <img src={value.icon} />
-              <FormLabel className="text-white text-sm" htmlFor={value.type}>
-                {value.type}
-              </FormLabel>
-            </Sheet>
-          ))}
+                  boxShadow: "sm",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 1.5,
+                  p: 2,
+                  minWidth: 120,
+                }}
+              >
+                <Radio
+                  id={value.icon}
+                  value={value.type}
+                  checkedIcon={<CheckCircleRoundedIcon />}
+                />
+                <img src={value.icon} />
+                <FormLabel className="text-white text-sm" htmlFor={value.icon}>
+                  {value.type}
+                </FormLabel>
+              </Sheet>
+            ))}
           </Box>
         </Box>
       </RadioGroup>
