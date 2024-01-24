@@ -1,15 +1,17 @@
 
 import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
+import WhyChooseMyRide from './components/WhyChooseMyRide'
 
 
 function App() {
 
   return (
-    <div id="root">
+    <>
      <NavBar/>
      <HomePage/>
-    </div>
+     <WhyChooseMyRide/>
+    </>
   )
 }
 

@@ -4,34 +4,26 @@ import { AppBar, Toolbar } from "@mui/material";
 import React from "react";
 
 const NavBar = () => {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
   return (
     <AppBar data-testid="NavBar" sx={{ background: "#242424" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <img src="Logo.svg" alt="My ride logo"></img>
-        <Tabs>
+        <Tabs defaultValue={0}>
           <TabsList
-            className="flex gap-10"
-            value={value}
-            onChange={handleChange}
+            className="flex gap-10 "
             aria-label="Navigation Links"
             role="navigation"
           >
-            <Tab className="text-[#FBA403]" value={0}>
+            <Tab className="text-laranja font-roboto" value={0}>
               Home
             </Tab>
-            <Tab className="text-white" value={1}>
+            <Tab className="text-white font-roboto" value={1}>
               Getting a Taxi
             </Tab>
-            <Tab className="text-white" value={2}>
+            <Tab className="text-white font-roboto" value={2}>
               Mobile App
             </Tab>
-            <Tab className="text-white" value={3}>
+            <Tab className="text-white font-roboto" value={3}>
               Contact Us
             </Tab>
           </TabsList>
