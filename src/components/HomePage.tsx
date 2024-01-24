@@ -12,13 +12,14 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import * as React from "react";
 
-const BookMyRide = () => {
+const HomePage = () => {
   return (
     <Box className="bg-[#242424] flex justify-evenly gap-2 pt-36 pb-20">
       <img
         src="myRideYellowCar.svg"
         alt="a yellow car with the my ride logo on street"
         width="610px"
+        data-testid="YellowCarImage"
       />{" "}
       <Box className=" mt-20 ">
         <Box className="mb-5">
@@ -63,8 +64,8 @@ const BookMyRide = () => {
           </InputLabel>
           <Select
             className="text-white mb-2  border-white"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="your pickup"
+            id="your-pickup"
             value={0}
             label="your-pickup"
           >
@@ -84,4 +85,4 @@ const BookMyRide = () => {
   );
 };
 
-export default BookMyRide;
+export default HomePage;

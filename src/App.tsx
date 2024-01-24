@@ -1,5 +1,5 @@
 
-import BookMyRide from './components/BookMyRide'
+import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
 
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div id="root">
      <NavBar/>
-     <BookMyRide/>
+     <HomePage/>
     </div>
   )
 }
