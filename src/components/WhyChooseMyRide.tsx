@@ -22,7 +22,7 @@ const WhyChooseMyRide = (props: Props) => {
       </Typography>
       <Box className="flex gap-10 mx-auto">
 
-        <Card className="max-w-[307px] bg-cinzaCards pb-2" >
+        <Card className="w-[307px] bg-cinzaCards pb-2" >
           <CardMedia
             sx={{ height: 214 }}
             image="basic-car.svg"
@@ -38,12 +38,12 @@ const WhyChooseMyRide = (props: Props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button className="text-laranja ml-auto mr-2 uppercase  align-top">Learn More</Button>
+            <Button href="https://www.google.com/search?q=basic+car" role="link" className="text-laranja ml-auto mr-2 uppercase mt-5 ">Learn More</Button>
           </CardActions>
         </Card>
 
 
-        <Card className="max-w-[307px] bg-cinzaCards pb-2" >
+        <Card className="w-[307px] bg-cinzaCards pb-2" >
           <CardMedia
             sx={{ height: 214 }}
             image="comfort-car.svg"
@@ -58,12 +58,12 @@ const WhyChooseMyRide = (props: Props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button className="text-laranja ml-auto mr-2 uppercase ">Learn More</Button>
+            <Button href="https://www.google.com/search?q=comfort+car" role="link" className="text-laranja ml-auto mr-2 uppercase ">Learn More</Button>
           </CardActions>
         </Card>
 
 
-        <Card className="max-w-[307px] bg-cinzaCards pb-2" >
+        <Card className="w-[307px] bg-cinzaCards pb-2" >
           <CardMedia
             sx={{ height: 214 }}
             image="business-car.svg"
@@ -78,12 +78,12 @@ const WhyChooseMyRide = (props: Props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button className="text-laranja ml-auto mr-2 uppercase">Learn More</Button>
+            <Button href="https://www.google.com/search?q=business+car" role="link" className="text-laranja ml-auto mr-2 uppercase">Learn More</Button>
           </CardActions>
         </Card>
 
 
-        <Card className="max-w-[307px] bg-cinzaCards pb-2" >
+        <Card className="w-[307px] bg-cinzaCards pb-2" >
           <CardMedia
             sx={{ height: 214 }}
             image="deluxe-car.svg"
@@ -98,7 +98,7 @@ const WhyChooseMyRide = (props: Props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button className="text-laranja ml-auto mr-2 uppercase">Learn More</Button>
+            <Button href="https://www.google.com/search?q=deluxe+car" role="link" className="text-laranja ml-auto mr-2 uppercase">Learn More</Button>
           </CardActions>
         </Card>
       </Box>
