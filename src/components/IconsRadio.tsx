@@ -21,7 +21,6 @@ const IconsRadio = (props: Props) => {
   const [selectedValue, setSelectedValue] = React.useState("Sedan");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // event.preventDefault();
     setSelectedValue(event.target.value);
   };
 
@@ -32,7 +31,6 @@ const IconsRadio = (props: Props) => {
         defaultValue={selectedValue}
         overlay
         name="your-car-type"
-        // onClick={handleChange}
         sx={{
           flexDirection: "row",
           gap: 2,
@@ -65,10 +63,9 @@ const IconsRadio = (props: Props) => {
             {IconsAndTypes.map((value) => (
               <Sheet
                 component="label"
-                className="bg-cinzaForm w-[147px] h-[100px] "
+                className="bg-cinzaForm w-[147px]"
                 key={value.type}
                 variant="outlined"
-                onClick={handleChange}
                 sx={{
                   borderRadius: "md",
 

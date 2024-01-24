@@ -2,28 +2,27 @@ import { FormControl } from "@mui/base";
 import {
   Box,
   Button,
-  Container,
-  FormLabel,
-  Input,
   MenuItem,
-  Radio,
-  RadioGroup,
   Select,
   Stack,
+  Switch,
   TextField,
   Typography,
 } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
-
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-
+import { useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
 import IconsRadio from "./IconsRadio";
 
-type Props = {};
+type Inputs = {
+  "Full Name": string;
+  "Email Adress": string;
+  Country: string;
+  City: string;
+  "Referral Code": string;
+};
 
-const RideForm = (props: Props) => {
+const RideForm = () => {
   const [checked, setChecked] = React.useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +41,13 @@ const RideForm = (props: Props) => {
     },
   }));
 
-  const label = { inputProps: { "aria-label": "I drive my own car switch" } };
+  const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
+
+  const { register, handleSubmit } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(JSON.stringify(data));
+  };
 
   return (
     <Box className="bg-cinzaEscuro py-10">
@@ -59,7 +64,11 @@ const RideForm = (props: Props) => {
         </Box>
       </Box>
       <Box component="form" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-        <FormControl defaultValue={""} required>
+        <FormControl
+        
+          defaultValue={""}
+          required
+        >
           <Stack>
             <TextField
               className=" 
@@ -68,6 +77,7 @@ const RideForm = (props: Props) => {
               variant="outlined"
               aria-label="Full Name Input"
               placeholder="Full Name"
+              {...register("Full Name")}
             />
 
             <TextField
@@ -76,28 +86,34 @@ const RideForm = (props: Props) => {
               variant="outlined"
               aria-label="Email Adress Input"
               placeholder="Email Adress"
+              {...register("Email Adress")}
             />
 
             <Select
               className="w-full mb-5 text-white"
               labelId="Country"
               id="country-select"
-              //   value={country}
+              value={""}
               label="Country"
               //   onChange={handleChange}
+              {...register("Country")}
             >
-              <MenuItem value={10}>Singapore</MenuItem>
+              <MenuItem value={"Singapore"}>Singapore</MenuItem>
             </Select>
 
             <Select
               className="w-full mb-5 text-white"
               labelId="City"
               id="city-select"
-              //   value={country}
+              value={""}
               label="City"
               placeholder="City"
               //   onChange={handleChange}
-            ></Select>
+              {...register("City")}
+            >
+              {" "}
+              <MenuItem value={""}>Alguma Cidade</MenuItem>
+            </Select>
 
             <TextField
               className="w-full pb-5 text-white"
@@ -105,8 +121,9 @@ const RideForm = (props: Props) => {
               variant="outlined"
               aria-label="Referral Code Input"
               placeholder="Referral Code"
+              {...register("Referral Code")}
             />
-          
+
             <Box className="flex justify-between flex-col pb-6 ">
               <Box className="w-full flex justify-between ">
                 <Typography className="text-white">
@@ -117,13 +134,18 @@ const RideForm = (props: Props) => {
                   {...label}
                   checked={checked}
                   onChange={handleChange}
-                  onClick={handleChange}
                 />
               </Box>
               {checked ? <IconsRadio /> : null}
             </Box>
-            <Button className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"> Submit</Button>
-
+            <Button
+              type="button"
+              onClick={handleSubmit(onSubmit)}
+              className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"
+            >
+              {" "}
+              Submit
+            </Button>
           </Stack>
         </FormControl>
       </Box>
