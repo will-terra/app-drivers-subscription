@@ -1,6 +1,7 @@
 import { FormControl } from "@mui/base";
 import {
   Box,
+  Button,
   Container,
   FormLabel,
   Input,
@@ -105,13 +106,8 @@ const RideForm = (props: Props) => {
               aria-label="Referral Code Input"
               placeholder="Referral Code"
             />
-            {/* <Switch
-              slots={{
-                root: Root,
-              }}
-              {...label}
-            /> */}
-            <Box className="flex justify-between flex-col ">
+          
+            <Box className="flex justify-between flex-col pb-6 ">
               <Box className="w-full flex justify-between ">
                 <Typography className="text-white">
                   I drive my own car
@@ -125,6 +121,8 @@ const RideForm = (props: Props) => {
               </Box>
               {checked ? <IconsRadio /> : null}
             </Box>
+            <Button className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"> Submit</Button>
+
           </Stack>
         </FormControl>
       </Box>
