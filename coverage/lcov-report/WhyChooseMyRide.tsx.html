@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for HomePage.tsx</title>
+    <title>Code coverage report for WhyChooseMyRide.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> HomePage.tsx</h1>
+        <h1><a href="index.html">All files</a> WhyChooseMyRide.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -151,8 +151,28 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -239,94 +259,137 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button } from "@mui/base";
+import {
   Box,
-  FormGroup,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
   Typography,
-  Button,
 } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import * as React from "react";
+import React from "react";
 &nbsp;
-const HomePage = () =&gt; {
+type Props = {};
+&nbsp;
+const WhyChooseMyRide = (props: Props) =&gt; {
   return (
-    &lt;Box className="bg-[#242424] flex justify-evenly gap-2 pt-36 pb-20"&gt;
-      &lt;img
-        src="myRideYellowCar.svg"
-        alt="a yellow car with the my ride logo on street"
-        width="610px"
-        data-testid="YellowCarImage"
-      /&gt;{" "}
-      &lt;Box className=" mt-20 "&gt;
-        &lt;Box className="mb-5"&gt;
-          &lt;Typography
-            sx={{
-              textTransform: "uppercase",
-              color: "#FFFFFF",
-              fontSize: "26px",
-            }}
-          &gt;
-            {" "}
-            Need a ride?
-          &lt;/Typography&gt;
-          &lt;Typography
-            sx={{ color: "#ffffff", fontSize: "50px", fontWeight: 700 }}
-          &gt;
-            Book with{" "}
-            &lt;span
-              style={{ color: "#FBA403", fontStyle: "italic", fontWeight: 500 }}
-            &gt;
-              my
-            &lt;/span&gt;
-            &lt;span
-              style={{
-                color: "#FBA403",
-                fontStyle: "italic",
-                textTransform: "uppercase",
-              }}
-            &gt;
-              ride{" "}
-            &lt;/span&gt;{" "}
-            now!
-          &lt;/Typography&gt;
-        &lt;/Box&gt;
+    &lt;Box className="flex flex-col bg-cinzaEscuro pt-10 pb-20"&gt;
+      &lt;Typography className="font-roboto text-laranja uppercase  mx-auto"&gt;
+        Why should you ride with us?
+      &lt;/Typography&gt;
+      &lt;Typography className="mx-auto mb-10 text-white font-bold text-[45px]"&gt;
+        Best in class rides
+      &lt;/Typography&gt;
+      &lt;Box className="flex gap-10 mx-auto"&gt;
 &nbsp;
-        &lt;FormGroup className="bg-[#2c2c2c] py-6 px-5 w-[610px]"&gt;
-          &lt;FormLabel className="text-white font-bold text-base mb-2"&gt;
-            Find a ride now
-          &lt;/FormLabel&gt;
-          &lt;InputLabel sx={{ color: "#ffffff" }} id="your-pickup"&gt;
-            Your Pickup
-          &lt;/InputLabel&gt;
-          &lt;Select
-            className="text-white mb-2  border-white"
-            labelId="your pickup"
-            id="your-pickup"
-            value={0}
-            label="your-pickup"
-          &gt;
-            &lt;MenuItem value={0}&gt;Current Location &lt;/MenuItem&gt;
-          &lt;/Select&gt;
-          &lt;TextField
-            className="text-white mb-2  border-white focus:border-[FBA403]"
-            sx={{ color: "#FFFFFF !important" }}
-            id="outlined-basic"
-            label="Your Destination"
-            variant="outlined"
+        &lt;Card className="w-[307px] bg-cinzaCards pb-2" &gt;
+          &lt;CardMedia
+            sx={{ height: 214 }}
+            image="basic-car.svg"
+            title="basic car"
           /&gt;
-          &lt;Button className="bg-[#FBA403] text-white"&gt; &lt;SearchIcon/&gt; &amp;nbsp; Find a driver&lt;/Button&gt;
-        &lt;/FormGroup&gt;
+          &lt;CardContent&gt;
+            &lt;Typography gutterBottom variant="h5" component="div" className="text-white"&gt;
+              Basic
+            &lt;/Typography&gt;
+            &lt;Typography variant="body2" className="text-white"&gt;
+              The best balance of price and comfort. You will not go wrong with
+              our basic rides.
+            &lt;/Typography&gt;
+          &lt;/CardContent&gt;
+          &lt;CardActions&gt;
+            &lt;Button href="https://www.google.com/search?q=basic+car" role="link" className="text-laranja ml-auto mr-2 uppercase mt-5 "&gt;Learn More&lt;/Button&gt;
+          &lt;/CardActions&gt;
+        &lt;/Card&gt;
+&nbsp;
+&nbsp;
+        &lt;Card className="w-[307px] bg-cinzaCards pb-2" &gt;
+          &lt;CardMedia
+            sx={{ height: 214 }}
+            image="comfort-car.svg"
+            title="comfort car"
+          /&gt;
+          &lt;CardContent&gt;
+            &lt;Typography gutterBottom variant="h5" component="div" className="text-white"&gt;
+              Comfort
+            &lt;/Typography&gt;
+            &lt;Typography variant="body2" className="text-white"&gt;
+            If comfort is your priority, this is the ride for you. It's spacious and packed with features.
+            &lt;/Typography&gt;
+          &lt;/CardContent&gt;
+          &lt;CardActions&gt;
+            &lt;Button href="https://www.google.com/search?q=comfort+car" role="link" className="text-laranja ml-auto mr-2 uppercase "&gt;Learn More&lt;/Button&gt;
+          &lt;/CardActions&gt;
+        &lt;/Card&gt;
+&nbsp;
+&nbsp;
+        &lt;Card className="w-[307px] bg-cinzaCards pb-2" &gt;
+          &lt;CardMedia
+            sx={{ height: 214 }}
+            image="business-car.svg"
+            title="business car"
+          /&gt;
+          &lt;CardContent&gt;
+            &lt;Typography gutterBottom variant="h5" component="div" className="text-white"&gt;
+              Business
+            &lt;/Typography&gt;
+            &lt;Typography variant="body2" className="text-white"&gt;
+            Do you want to travel around the city in style? Make sure to select or business class rides.
+            &lt;/Typography&gt;
+          &lt;/CardContent&gt;
+          &lt;CardActions&gt;
+            &lt;Button href="https://www.google.com/search?q=business+car" role="link" className="text-laranja ml-auto mr-2 uppercase"&gt;Learn More&lt;/Button&gt;
+          &lt;/CardActions&gt;
+        &lt;/Card&gt;
+&nbsp;
+&nbsp;
+        &lt;Card className="w-[307px] bg-cinzaCards pb-2" &gt;
+          &lt;CardMedia
+            sx={{ height: 214 }}
+            image="deluxe-car.svg"
+            title="deluxe car"
+          /&gt;
+          &lt;CardContent&gt;
+            &lt;Typography gutterBottom variant="h5" component="div" className="text-white"&gt;
+              Deluxe
+            &lt;/Typography&gt;
+            &lt;Typography variant="body2" className="text-white"&gt;
+            The best ride for luxury and comfort. No compromises here. You'll surely get what you pay for.
+            &lt;/Typography&gt;
+          &lt;/CardContent&gt;
+          &lt;CardActions&gt;
+            &lt;Button href="https://www.google.com/search?q=deluxe+car" role="link" className="text-laranja ml-auto mr-2 uppercase"&gt;Learn More&lt;/Button&gt;
+          &lt;/CardActions&gt;
+        &lt;/Card&gt;
       &lt;/Box&gt;
     &lt;/Box&gt;
   );
 };
 &nbsp;
-export default HomePage;
+export default WhyChooseMyRide;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
