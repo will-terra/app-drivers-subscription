@@ -16,17 +16,9 @@ describe("NavBar", () => {
     expect(NavBarTabs).toBeInTheDocument()
   })
 
-  it("Icons Renderin", () => {
+  it("Icons Rendering", () => {
     const {getByAltText} = render(<NavBar/>);
     const NavBarIcons = getByAltText(/icons/i)
     expect(NavBarIcons).toBeInTheDocument()
   })
 });
-
-// test("links renders", () => {
-//   render(<NavBar/>);
-//   const NavLinksList = screen.getByRole(List);
-//   expect(NavLinksList).toContainElement(Link)
-// }
-
-// )

@@ -1,12 +1,5 @@
-import {
-  AppBar,
-  Link,
-  List,
-  ListItem,
-  Tab,
-  Tabs,
-  Toolbar,
-} from "@mui/material";
+import { Tab, Tabs, TabsList } from "@mui/base";
+import { AppBar, Toolbar } from "@mui/material";
 // import "@fontsource/roboto/400.css";
 import React from "react";
 
@@ -20,31 +13,31 @@ const NavBar = () => {
   return (
     <AppBar data-testid="NavBar" sx={{ background: "#242424" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {" "}
-        <img src="Logo.svg" alt="My ride logo"></img>{" "}
-        <Tabs value={value} onChange={handleChange} aria-label="Navigation Links"
-  role="navigation">
-          <Tab className="text-[#FBA403]" label="Home" />
-          <Tab className="text-white" label=" Getting a Taxi" />
-          <Tab className="text-white" label="Mobile App" />
-          <Tab className="text-white" label=" Contact Us" />
+        <img src="Logo.svg" alt="My ride logo"></img>
+        <Tabs>
+          <TabsList
+            className="flex gap-10"
+            value={value}
+            onChange={handleChange}
+            aria-label="Navigation Links"
+            role="navigation"
+          >
+            <Tab className="text-[#FBA403]" value={0}>
+              Home
+            </Tab>
+            <Tab className="text-white" value={1}>
+              Getting a Taxi
+            </Tab>
+            <Tab className="text-white" value={2}>
+              Mobile App
+            </Tab>
+            <Tab className="text-white" value={3}>
+              Contact Us
+            </Tab>
+          </TabsList>
         </Tabs>
-        {/* <List tabindex="0" className="flex ">
-          <ListItem role="link" sx={{ color: "#FBA403"  }}>
-            Home
-          </ListItem>
-          <ListItem role="link" sx={{ color: "#ffffff" }} >
-            Getting a Taxi
-          </ListItem>
-          <ListItem role="link" sx={{ color: "#ffffff" }} >
-            Mobile App
-          </ListItem>
-          <ListItem role="link" sx={{ color: "#ffffff" }} >
-            Contact Us
-          </ListItem>
-        </List> */}
         <img src="header-icons.svg" alt="Notification and User icons"></img>
-      </Toolbar>{" "}
+      </Toolbar>
     </AppBar>
   );
 };
