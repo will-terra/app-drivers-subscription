@@ -5,27 +5,17 @@ import { z } from "zod";
 
 export const useRideForm = () => {
   const rideFormSchema = z.object({
-    fullname: z.string()
-    .trim()
-    .min(6)
-    .includes(" "),
+    fullname: z.string().trim().min(6).includes(" "),
 
-    email: z.string()
-    .min(1)
-    .email(),
+    email: z.string().min(1).email(),
 
     myowncar: z.boolean(),
 
-    country: z.string()
-    .min(1),
+    country: z.string().min(1),
 
-    city: z.string()
-    .min(1),
+    city: z.string().min(1),
 
-    referralcode: z.string()
-    .min(7)
-    .max(7)
-    .includes("-"),
+    referralcode: z.string().min(7).max(7).includes("-"),
   });
 
   type rideFormSchemaData = z.infer<typeof rideFormSchema>;
@@ -48,6 +38,17 @@ export const useRideForm = () => {
 
   const [city, setCity] = React.useState("");
 
+  function updateForm(data) {
+    fetch("http://localhost:3000/form", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+     
+  }
+
   return {
     rideFormSchema,
     register,
@@ -60,5 +61,6 @@ export const useRideForm = () => {
     checked,
     setChecked,
     handleChange,
+    updateForm,
   };
 };

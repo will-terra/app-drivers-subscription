@@ -30,6 +30,7 @@ const RideForm = () => {
     checked,
     setChecked,
     handleChange,
+    updateForm,
   } = useRideForm();
 
   const OrangeSwitch = styled(Switch)(({ theme }) => ({
@@ -46,9 +47,7 @@ const RideForm = () => {
 
   const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
 
-  const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
-    console.log(JSON.stringify(data));
-  };
+  const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {updateForm(data) };
 
   const Countries = Object.keys(countriesAndCities);
 
@@ -118,7 +117,7 @@ const RideForm = () => {
               </Typography>
             ) : null}
             <Select
-              className="w-full mb-5 text-white  bg-laranja placeholder:text-white"
+              className="w-full mb-5 text-white  placeholder:text-white"
               labelId="City"
               id="city-select"
               value={city}
@@ -128,7 +127,7 @@ const RideForm = () => {
               onChange={(event) => setCity(event?.target.value)}
             >
               {country &&
-                countriesAndCities[country].map((value: any, index: any) => (
+                countriesAndCities[country].map((value, index) => (
                   <MenuItem key={index} value={value}>
                     {value}
                   </MenuItem>
