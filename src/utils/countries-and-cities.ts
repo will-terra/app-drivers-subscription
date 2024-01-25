@@ -1,4 +1,4 @@
-{
+export const  countriesAndCities =  {
   "Afghanistan": [
     "Herat",
     "Kabul",
@@ -84144,3 +84144,4 @@
     "Victoria Falls"
   ]
 }
+

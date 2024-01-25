@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -10,24 +11,26 @@ import {
 } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 import { useForm, SubmitHandler } from "react-hook-form";
-import React from "react";
 import IconsRadio from "./IconsRadio";
-import { FormControl } from "@mui/base";
-
-type Inputs = {
-  "Full Name": string;
-  "Email Adress": string;
-  Country: string;
-  City: string;
-  "Referral Code": string;
-};
+import ErrorIcon from "@mui/icons-material/Error";
+import { countriesAndCities } from "../utils/countries-and-cities.ts";
+import { useRideForm } from "../hook/useRideForm.ts";
+import { z } from "zod";
 
 const RideForm = () => {
-  const [checked, setChecked] = React.useState(false);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
+  const {
+    rideFormSchema,
+    register,
+    handleSubmit,
+    errors,
+    country,
+    setCountry,
+    city,
+    setCity,
+    checked,
+    setChecked,
+    handleChange,
+  } = useRideForm();
 
   const OrangeSwitch = styled(Switch)(({ theme }) => ({
     "& .MuiSwitch-switchBase.Mui-checked": {
@@ -43,11 +46,11 @@ const RideForm = () => {
 
   const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
 
-  const { register, handleSubmit } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
     console.log(JSON.stringify(data));
   };
+
+  const Countries = Object.keys(countriesAndCities);
 
   return (
     <Box className="bg-cinzaEscuro py-10">
@@ -63,63 +66,92 @@ const RideForm = () => {
           </Typography>
         </Box>
       </Box>
-      <Box component="form" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-        <FormControl defaultValue={""} required>
+      <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
+        <form>
           <Stack>
             <TextField
-              className=" 
-               w-full mb-5 text-laranja bg-cinzaForm  "
+              className="  w-full mb-5 text-laranja bg-cinzaForm  "
               id="full-name"
               variant="outlined"
               aria-label="Full Name Input"
               placeholder="Full Name"
-              {...register("Full Name")}
+              {...register("fullname")}
             />
-
+            {errors.fullname ? (
+              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                <ErrorIcon className="text-sm items-center" /> Invalid name
+              </Typography>
+            ) : null}
             <TextField
               className="w-full pb-5 text-white"
-              id="email"
+              id="EmailAdress"
               variant="outlined"
               aria-label="Email Adress Input"
               placeholder="Email Adress"
-              {...register("Email Adress")}
+              {...register("email")}
             />
+            {errors.email ? (
+              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                {" "}
+                <ErrorIcon className="text-sm items-center" /> Invalid email
+              </Typography>
+            ) : null}
 
             <Select
               className="w-full mb-5 text-white"
               labelId="Country"
               id="country-select"
-              value={""}
+              value={country}
               label="Country"
-              //   onChange={handleChange}
-              {...register("Country")}
+              {...register("country")}
+              onChange={(event) => setCountry(event?.target.value)}
             >
-              <MenuItem value={"Singapore"}>Singapore</MenuItem>
+              {Countries.map((value) => (
+                <MenuItem key={value} value={value}>
+                  {value}
+                </MenuItem>
+              ))}
             </Select>
-
+            {errors.country ? (
+              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                <ErrorIcon className="text-sm items-center" /> Invalid country
+              </Typography>
+            ) : null}
             <Select
-              className="w-full mb-5 text-white"
+              className="w-full mb-5 text-white  bg-laranja placeholder:text-white"
               labelId="City"
               id="city-select"
-              value={""}
+              value={city}
               label="City"
               placeholder="City"
-              //   onChange={handleChange}
-              {...register("City")}
+              {...register("city")}
+              onChange={(event) => setCity(event?.target.value)}
             >
-              {" "}
-              <MenuItem value={""}>Alguma Cidade</MenuItem>
+              {country &&
+                countriesAndCities[country].map((value: any, index: any) => (
+                  <MenuItem key={index} value={value}>
+                    {value}
+                  </MenuItem>
+                ))}
             </Select>
-
+            {errors.city ? (
+              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                <ErrorIcon className="text-sm items-center" /> Invalid city
+              </Typography>
+            ) : null}
             <TextField
               className="w-full pb-5 text-white"
               id="referral-code"
               variant="outlined"
               aria-label="Referral Code Input"
               placeholder="Referral Code"
-              {...register("Referral Code")}
+              {...register("referralcode")}
             />
-
+            {errors.referralcode ? (
+              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                <ErrorIcon className="text-sm items-center" /> Invalid code
+              </Typography>
+            ) : null}
             <Box className="flex justify-between flex-col pb-6 ">
               <Box className="w-full flex justify-between ">
                 <Typography className="text-white">
@@ -129,6 +161,7 @@ const RideForm = () => {
                 <OrangeSwitch
                   {...label}
                   checked={checked}
+                  {...register("myowncar")}
                   onChange={handleChange}
                 />
               </Box>
@@ -143,7 +176,7 @@ const RideForm = () => {
               Submit
             </Button>
           </Stack>
-        </FormControl>
+        </form>
       </Box>
     </Box>
   );
