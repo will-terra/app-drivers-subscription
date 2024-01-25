@@ -21,7 +21,6 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Sheet from "@mui/joy/Sheet";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
-
 const RideForm = () => {
   const {
     rideFormSchema,
@@ -38,14 +37,10 @@ const RideForm = () => {
     updateForm,
     fetchForm,
     IconsAndTypes,
-    selectedValue, 
+    selectedValue,
     setSelectedValue,
     handleChangeRadio,
   } = useRideForm();
-
-
-
-
 
   const OrangeSwitch = styled(Switch)(({ theme }) => ({
     "& .MuiSwitch-switchBase.Mui-checked": {
@@ -61,14 +56,13 @@ const RideForm = () => {
 
   const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
 
-  const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {updateForm(data) };
+  const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
+    updateForm(data);
+  };
 
   const Countries = Object.keys(countriesAndCities);
 
-  
-
   return (
-
     <Box className="bg-cinzaEscuro py-10">
       <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
         <img src="cartoon-car.svg" alt="A cartoon of a yellow card" />
@@ -146,6 +140,7 @@ const RideForm = () => {
               value={city}
               label="City"
               placeholder="City"
+              disabled={country === "" ? true : false}
               {...register("city")}
               onChange={(event) => setCity(event?.target.value)}
             >
@@ -192,79 +187,81 @@ const RideForm = () => {
                 />
               </Box>
 
-              {checked ?  <RadioGroup
-        aria-label="Your car type select"
-        defaultValue={selectedValue}
-        overlay
-        id="cartype"
-        {...register("cartype")}
-        onChange={handleChangeRadio}
-        sx={{
-          flexDirection: "row",
-          gap: 2,
-          [`& .${radioClasses.checked}`]: {
-            [`& .${radioClasses.action}`]: {
-              inset: -1,
-              border: "3px solid",
-              borderColor: "#ffffff",
-            },
-          },
-          [`& .${radioClasses.radio}`]: {
-            display: "contents",
-            "& > svg": {
-              zIndex: 2,
-              position: "absolute",
-              top: "-8px",
-              right: "-8px",
-              bgcolor: "background.surface",
-              borderRadius: "50%",
-              color: "#FBA403",
-            },
-          },
-        }}
-      >
-        <Box className="flex flex-col">
-          <FormLabel className="pb-4 text-laranja font-medium text-xl">
-            Select your car type
-          </FormLabel>
-          <Box className="flex flex-row gap-5">
-            {IconsAndTypes.map((value) => (
-              <Sheet
-                component="label"
-                className="bg-cinzaForm w-[147px]"
-                key={value.type}
-                variant="outlined"
-                sx={{
-                  borderRadius: "md",
-
-                  boxShadow: "sm",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 1.5,
-                  p: 2,
-                  minWidth: 120,
-                }}
-              >
-                <Radio
-                  id={value.icon}
-                  value={value.type}
-                  checkedIcon={<CheckCircleRoundedIcon />}
-
+              {checked ? (
+                <RadioGroup
+                  aria-label="Your car type select"
+                  defaultValue={selectedValue}
+                  overlay
+                  id="cartype"
                   {...register("cartype")}
+                  onChange={handleChangeRadio}
+                  sx={{
+                    flexDirection: "row",
+                    gap: 2,
+                    [`& .${radioClasses.checked}`]: {
+                      [`& .${radioClasses.action}`]: {
+                        inset: -1,
+                        border: "3px solid",
+                        borderColor: "#ffffff",
+                      },
+                    },
+                    [`& .${radioClasses.radio}`]: {
+                      display: "contents",
+                      "& > svg": {
+                        zIndex: 2,
+                        position: "absolute",
+                        top: "-8px",
+                        right: "-8px",
+                        bgcolor: "background.surface",
+                        borderRadius: "50%",
+                        color: "#FBA403",
+                      },
+                    },
+                  }}
+                >
+                  <Box className="flex flex-col">
+                    <FormLabel className="pb-4 text-laranja font-medium text-xl">
+                      Select your car type
+                    </FormLabel>
+                    <Box className="flex flex-row gap-5">
+                      {IconsAndTypes.map((value) => (
+                        <Sheet
+                          component="label"
+                          className="bg-cinzaForm w-[147px]"
+                          key={value.type}
+                          variant="outlined"
+                          sx={{
+                            borderRadius: "md",
 
-                  onChange={setSelectedValue}
-                />
-                <img src={value.icon} />
-                <FormLabel className="text-white text-sm" htmlFor={value.icon}>
-                  {value.type}
-                </FormLabel>
-              </Sheet>
-            ))}
-          </Box>
-        </Box>
-      </RadioGroup> : null}
-
+                            boxShadow: "sm",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            gap: 1.5,
+                            p: 2,
+                            minWidth: 120,
+                          }}
+                        >
+                          <Radio
+                            id={value.icon}
+                            value={value.type}
+                            checkedIcon={<CheckCircleRoundedIcon />}
+                            {...register("cartype")}
+                            onChange={setSelectedValue}
+                          />
+                          <img src={value.icon} />
+                          <FormLabel
+                            className="text-white text-sm"
+                            htmlFor={value.icon}
+                          >
+                            {value.type}
+                          </FormLabel>
+                        </Sheet>
+                      ))}
+                    </Box>
+                  </Box>
+                </RadioGroup>
+              ) : null}
             </Box>
             <Button
               type="button"

@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest",
+    "server": "json-server --watch src/utils/db.json",
     "build-css": "tailwindcss -i ./src/index.css -o ./public/output.css --watch"
   },
   "dependencies": {
