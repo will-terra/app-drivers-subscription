@@ -1,4 +1,3 @@
-import { FormControl } from "@mui/base";
 import {
   Box,
   Button,
@@ -13,6 +12,7 @@ import { alpha, styled } from "@mui/material/styles";
 import { useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
 import IconsRadio from "./IconsRadio";
+import { FormControl } from "@mui/base";
 
 type Inputs = {
   "Full Name": string;
@@ -64,11 +64,7 @@ const RideForm = () => {
         </Box>
       </Box>
       <Box component="form" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-        <FormControl
-        
-          defaultValue={""}
-          required
-        >
+        <FormControl defaultValue={""} required>
           <Stack>
             <TextField
               className=" 
