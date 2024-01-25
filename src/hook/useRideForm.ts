@@ -9,13 +9,15 @@ export const useRideForm = () => {
 
     email: z.string().min(1).email(),
 
-    myowncar: z.boolean(),
-
     country: z.string().min(1),
 
     city: z.string().min(1),
 
     referralcode: z.string().min(7).max(7).includes("-"),
+
+    myowncar: z.boolean(),
+
+    cartype: z.string().min(1),
   });
 
   type rideFormSchemaData = z.infer<typeof rideFormSchema>;
@@ -46,8 +48,39 @@ export const useRideForm = () => {
         "Content-Type": "application/json",
       },
     })
-     
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
+
+  async function fetchForm({ id }) {
+    const url = "http://localhost:3000/plants/" + id;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const error = new Error("An error occurred while fetching the form data");
+      error.code = response.status;
+      error.info = await response.json();
+      throw error;
+    }
+
+    const formData = await response.json();
+
+    return formData;
+  }
+
+  const IconsAndTypes = [
+    { icon: "sedan-icon.svg", type: "Sedan" },
+    { icon: "suv-van-icon.svg", type: "SUV /Van" },
+    { icon: "semy-luxury-icon.svg", type: "Semy Luxury" },
+    { icon: "luxury-car-icon.svg", type: "Luxury Car" },
+  ];
+
+  const [selectedValue, setSelectedValue] = React.useState("Sedan");
+
+  const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);}
 
   return {
     rideFormSchema,
@@ -62,5 +95,10 @@ export const useRideForm = () => {
     setChecked,
     handleChange,
     updateForm,
+    fetchForm,
+    IconsAndTypes,
+    selectedValue, 
+    setSelectedValue,
+    handleChangeRadio,
   };
 };

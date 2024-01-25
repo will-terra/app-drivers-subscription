@@ -11,11 +11,16 @@ import {
 } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 import { useForm, SubmitHandler } from "react-hook-form";
-import IconsRadio from "./IconsRadio";
 import ErrorIcon from "@mui/icons-material/Error";
 import { countriesAndCities } from "../utils/countries-and-cities.ts";
 import { useRideForm } from "../hook/useRideForm.ts";
 import { z } from "zod";
+import FormLabel from "@mui/joy/FormLabel";
+import Radio, { radioClasses } from "@mui/joy/Radio";
+import RadioGroup from "@mui/joy/RadioGroup";
+import Sheet from "@mui/joy/Sheet";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+
 
 const RideForm = () => {
   const {
@@ -31,7 +36,16 @@ const RideForm = () => {
     setChecked,
     handleChange,
     updateForm,
+    fetchForm,
+    IconsAndTypes,
+    selectedValue, 
+    setSelectedValue,
+    handleChangeRadio,
   } = useRideForm();
+
+
+
+
 
   const OrangeSwitch = styled(Switch)(({ theme }) => ({
     "& .MuiSwitch-switchBase.Mui-checked": {
@@ -51,7 +65,10 @@ const RideForm = () => {
 
   const Countries = Object.keys(countriesAndCities);
 
+  
+
   return (
+
     <Box className="bg-cinzaEscuro py-10">
       <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
         <img src="cartoon-car.svg" alt="A cartoon of a yellow card" />
@@ -65,30 +82,34 @@ const RideForm = () => {
           </Typography>
         </Box>
       </Box>
+
       <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
         <form>
           <Stack>
             <TextField
               className="  w-full mb-5 text-laranja bg-cinzaForm  "
-              id="full-name"
+              id="fullname"
               variant="outlined"
               aria-label="Full Name Input"
               placeholder="Full Name"
               {...register("fullname")}
             />
+
             {errors.fullname ? (
               <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
                 <ErrorIcon className="text-sm items-center" /> Invalid name
               </Typography>
             ) : null}
+
             <TextField
               className="w-full pb-5 text-white"
-              id="EmailAdress"
+              id="email"
               variant="outlined"
               aria-label="Email Adress Input"
               placeholder="Email Adress"
               {...register("email")}
             />
+
             {errors.email ? (
               <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
                 {" "}
@@ -99,7 +120,7 @@ const RideForm = () => {
             <Select
               className="w-full mb-5 text-white"
               labelId="Country"
-              id="country-select"
+              id="country"
               value={country}
               label="Country"
               {...register("country")}
@@ -111,15 +132,17 @@ const RideForm = () => {
                 </MenuItem>
               ))}
             </Select>
+
             {errors.country ? (
               <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
                 <ErrorIcon className="text-sm items-center" /> Invalid country
               </Typography>
             ) : null}
+
             <Select
               className="w-full mb-5 text-white  placeholder:text-white"
               labelId="City"
-              id="city-select"
+              id="city"
               value={city}
               label="City"
               placeholder="City"
@@ -133,24 +156,28 @@ const RideForm = () => {
                   </MenuItem>
                 ))}
             </Select>
+
             {errors.city ? (
               <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
                 <ErrorIcon className="text-sm items-center" /> Invalid city
               </Typography>
             ) : null}
+
             <TextField
               className="w-full pb-5 text-white"
-              id="referral-code"
+              id="referralcode"
               variant="outlined"
               aria-label="Referral Code Input"
               placeholder="Referral Code"
               {...register("referralcode")}
             />
+
             {errors.referralcode ? (
               <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
                 <ErrorIcon className="text-sm items-center" /> Invalid code
               </Typography>
             ) : null}
+
             <Box className="flex justify-between flex-col pb-6 ">
               <Box className="w-full flex justify-between ">
                 <Typography className="text-white">
@@ -164,7 +191,80 @@ const RideForm = () => {
                   onChange={handleChange}
                 />
               </Box>
-              {checked ? <IconsRadio /> : null}
+
+              {checked ?  <RadioGroup
+        aria-label="Your car type select"
+        defaultValue={selectedValue}
+        overlay
+        id="cartype"
+        {...register("cartype")}
+        onChange={handleChangeRadio}
+        sx={{
+          flexDirection: "row",
+          gap: 2,
+          [`& .${radioClasses.checked}`]: {
+            [`& .${radioClasses.action}`]: {
+              inset: -1,
+              border: "3px solid",
+              borderColor: "#ffffff",
+            },
+          },
+          [`& .${radioClasses.radio}`]: {
+            display: "contents",
+            "& > svg": {
+              zIndex: 2,
+              position: "absolute",
+              top: "-8px",
+              right: "-8px",
+              bgcolor: "background.surface",
+              borderRadius: "50%",
+              color: "#FBA403",
+            },
+          },
+        }}
+      >
+        <Box className="flex flex-col">
+          <FormLabel className="pb-4 text-laranja font-medium text-xl">
+            Select your car type
+          </FormLabel>
+          <Box className="flex flex-row gap-5">
+            {IconsAndTypes.map((value) => (
+              <Sheet
+                component="label"
+                className="bg-cinzaForm w-[147px]"
+                key={value.type}
+                variant="outlined"
+                sx={{
+                  borderRadius: "md",
+
+                  boxShadow: "sm",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 1.5,
+                  p: 2,
+                  minWidth: 120,
+                }}
+              >
+                <Radio
+                  id={value.icon}
+                  value={value.type}
+                  checkedIcon={<CheckCircleRoundedIcon />}
+
+                  {...register("cartype")}
+
+                  onChange={setSelectedValue}
+                />
+                <img src={value.icon} />
+                <FormLabel className="text-white text-sm" htmlFor={value.icon}>
+                  {value.type}
+                </FormLabel>
+              </Sheet>
+            ))}
+          </Box>
+        </Box>
+      </RadioGroup> : null}
+
             </Box>
             <Button
               type="button"
