@@ -54,8 +54,6 @@ const RideForm = () => {
     },
   }));
 
-  const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
-
   const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
     const dataWithId = { ...data, id: 1 };
     updateForm(dataWithId); //test
@@ -132,7 +130,8 @@ const RideForm = () => {
 
                 <Select
                   className="w-full mb-5 text-white"
-                  labelId="Country"
+                  aria-label="Select your country"
+                  label="Country"
                   id="country"
                   inputProps={{
                     "data-testid": "country",
@@ -145,7 +144,11 @@ const RideForm = () => {
                   onChange={(event) => setCountry(event?.target.value)}
                 >
                   {Countries.map((value) => (
-                    <MenuItem key={value} value={value}>
+                    <MenuItem
+                      aria-label={value}
+                      key={value}
+                      value={value}
+                    >
                       {value}
                     </MenuItem>
                   ))}
@@ -215,9 +218,12 @@ const RideForm = () => {
                     </Typography>
 
                     <OrangeSwitch
-                      {...label}
+                      label="myowncar"
                       checked={checked}
-                      inputProps={{ "data-testid": "myowncar" }}
+                      inputProps={{
+                        "data-testid": "myowncar",
+                        "aria-label": "I drive my own car checkbox",
+                      }}
                       {...register("myowncar")}
                       onChange={handleChange}
                     />

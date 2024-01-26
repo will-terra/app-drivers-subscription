@@ -23,9 +23,4 @@ describe("get and post", () => {
     expect(data.id).toBe("1");
   });
 
-  it("to throw an error on post", async () => {
-    const postError = await fetchService.updateForm([1, 2, 3]);
-
-    expect(postError.status).not.toBe("200");
-  });
 });

@@ -9,7 +9,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import * as React from "react";
 
 const HomePage = () => {
@@ -59,29 +59,37 @@ const HomePage = () => {
           <FormLabel className="text-white font-bold text-base mb-2">
             Find a ride now
           </FormLabel>
-          <InputLabel sx={{ color: "#ffffff" }} id="your-pickup">
+          <InputLabel
+            sx={{ color: "#ffffff" }}
+            id="your-pickup"
+            aria-label="Your pickup select"
+          >
             Your Pickup
           </InputLabel>
           <Select
             className="text-white mb-2  border-white"
-            labelId="your pickup"
-
-            id="your-pickup"
+            id="your-pickup-select"
             value={0}
-            label="your-pickup"
+            label="Select your pickup"
+            aria-labelledby="your-pickup-select"
           >
-            <MenuItem value={0}>Current Location </MenuItem>
+            <MenuItem aria-label="Select" value={0}>Current Location </MenuItem>
           </Select>
           <TextField
             className="text-white mb-2  border-white focus:border-[FBA403]"
-            inputProps={{  "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white	" }}
-
+            inputProps={{
+              className:
+                "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white	",
+            }}
             sx={{ color: "#FFFFFF !important" }}
             id="outlined-basic"
             label="Your Destination"
             variant="outlined"
           />
-          <Button className="bg-[#FBA403] text-white"> <SearchIcon/> &nbsp; Find a driver</Button>
+          <Button className="bg-[#FBA403] text-white">
+            {" "}
+            <SearchIcon /> &nbsp; Find a driver
+          </Button>
         </FormGroup>
       </Box>
     </Box>

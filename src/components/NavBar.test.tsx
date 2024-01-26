@@ -10,8 +10,8 @@ describe("NavBar", () => {
     expect(NavBarLogo).toBeInTheDocument();
   });
   it("Tabs Rendering", () =>{
-    const {getByRole} = render(<NavBar/>);
-    const NavBarTabs = getByRole("navigation");
+    const {getByText} = render(<NavBar/>);
+    const NavBarTabs = getByText(/home/i);
 
     expect(NavBarTabs).toBeInTheDocument()
   })

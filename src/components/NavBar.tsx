@@ -9,11 +9,7 @@ const NavBar = () => {
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <img src="Logo.svg" alt="My ride logo"></img>
         <Tabs defaultValue={0}>
-          <TabsList
-            className="flex gap-10 "
-            aria-label="Navigation Links"
-            role="navigation"
-          >
+          <TabsList className="flex gap-10 ">
             <Tab className="text-laranja font-roboto" value={0}>
               Home
             </Tab>
