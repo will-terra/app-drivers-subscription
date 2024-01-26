@@ -27,6 +27,7 @@ const WhyChooseMyRide = (props: Props) => {
             sx={{ height: 214 }}
             image="basic-car.svg"
             title="basic car"
+            aria-hidden
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" className="text-white">
@@ -48,6 +49,7 @@ const WhyChooseMyRide = (props: Props) => {
             sx={{ height: 214 }}
             image="comfort-car.svg"
             title="comfort car"
+            aria-hidden
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" className="text-white">
@@ -68,6 +70,7 @@ const WhyChooseMyRide = (props: Props) => {
             sx={{ height: 214 }}
             image="business-car.svg"
             title="business car"
+            aria-hidden
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" className="text-white">
@@ -88,6 +91,7 @@ const WhyChooseMyRide = (props: Props) => {
             sx={{ height: 214 }}
             image="deluxe-car.svg"
             title="deluxe car"
+            aria-hidden
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" className="text-white">

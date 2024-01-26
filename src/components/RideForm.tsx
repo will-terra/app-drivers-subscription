@@ -64,8 +64,6 @@ const RideForm = () => {
 
   const [isFormSent, setisFormSent] = useState(false);
 
-  
-
   return (
     <Box className="bg-cinzaEscuro py-10">
       {isFormSent ? (
@@ -75,7 +73,11 @@ const RideForm = () => {
       ) : (
         <Box>
           <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
-            <img src="cartoon-car.svg" alt="A cartoon of a yellow card" />
+            <img
+              aria-hidden
+              src="cartoon-car.svg"
+              alt="A cartoon of a yellow card"
+            />
             <Box className="flex flex-col my-auto">
               <Typography className="text-laranja font-bold text-[27px]">
                 Drive with MyRide
@@ -87,7 +89,7 @@ const RideForm = () => {
             </Box>
           </Box>
           <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-            <form>
+            <form tabIndex={1}>
               <Stack>
                 <TextField
                   className="  w-full mb-5 text-laranja bg-cinzaForm  "
@@ -104,12 +106,16 @@ const RideForm = () => {
                 />
 
                 {errors.fullname ? (
-                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                  <Typography
+                    aria-live="polite"
+                    className="text-red-600 flex  gap-2 items-center -mt-2 mb-3 "
+                  >
                     <ErrorIcon className="text-sm items-center" /> Invalid name
                   </Typography>
                 ) : null}
 
                 <TextField
+                  tabIndex={1}
                   className="w-full pb-5 text-white"
                   id="email"
                   variant="outlined"
@@ -124,13 +130,17 @@ const RideForm = () => {
                 />
 
                 {errors.email ? (
-                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                  <Typography
+                    aria-live="polite"
+                    className="text-red-600 flex  gap-2 items-center -mt-2 mb-3"
+                  >
                     {" "}
                     <ErrorIcon className="text-sm items-center" /> Invalid email
                   </Typography>
                 ) : null}
 
                 <Select
+                  tabIndex={1}
                   className="w-full mb-5 text-white"
                   aria-label="Select your country"
                   label="Country"
@@ -141,29 +151,28 @@ const RideForm = () => {
                       "bg-cinzaForm  text-white rounded outline outline-1 outline-white placeholder-white",
                   }}
                   value={country}
-                  label="Country"
                   {...register("country")}
                   onChange={(event) => setCountry(event?.target.value)}
                 >
                   {Countries.map((value) => (
-                    <MenuItem
-                      aria-label={value}
-                      key={value}
-                      value={value}
-                    >
+                    <MenuItem aria-label={value} key={value} value={value}>
                       {value}
                     </MenuItem>
                   ))}
                 </Select>
 
                 {errors.country ? (
-                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                  <Typography
+                    aria-live="polite"
+                    className="text-red-600 flex  gap-2 items-center -mt-2 mb-3"
+                  >
                     <ErrorIcon className="text-sm items-center" /> Invalid
                     country
                   </Typography>
                 ) : null}
 
                 <Select
+                  tabIndex={1}
                   className="w-full mb-5 text-white  placeholder:text-white"
                   labelId="City"
                   id="city"
@@ -189,12 +198,16 @@ const RideForm = () => {
                 </Select>
 
                 {errors.city ? (
-                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                  <Typography
+                    aria-live="polite"
+                    className="text-red-600 flex  gap-2 items-center -mt-2 mb-3"
+                  >
                     <ErrorIcon className="text-sm items-center" /> Invalid city
                   </Typography>
                 ) : null}
 
                 <TextField
+                  tabIndex={1}
                   className="w-full pb-5 text-white"
                   id="referralcode"
                   variant="outlined"
@@ -209,18 +222,26 @@ const RideForm = () => {
                 />
 
                 {errors.referralcode ? (
-                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                  <Typography
+                    aria-live="polite"
+                    className="text-red-600 flex  gap-2 items-center -mt-2 mb-3"
+                  >
                     <ErrorIcon className="text-sm items-center" /> Invalid code
                   </Typography>
                 ) : null}
 
                 <Box className="flex justify-between flex-col pb-6 ">
-                  <Box className="w-full flex justify-between ">
+                  <Box
+                    // role="button"
+                    className="w-full flex justify-between "
+                    // onClick={handleChange}
+                  >
                     <Typography className="text-white">
                       I drive my own car
                     </Typography>
 
                     <OrangeSwitch
+                      tabIndex={1}
                       label="myowncar"
                       checked={checked}
                       inputProps={{
@@ -234,6 +255,7 @@ const RideForm = () => {
 
                   {checked ? (
                     <RadioGroup
+                      aria-live="polite"
                       aria-label="Your car type select"
                       defaultValue={selectedValue}
                       overlay
@@ -288,12 +310,14 @@ const RideForm = () => {
                               }}
                             >
                               <Radio
+                                // aria-label={`Radio select ${value.type}`}
+                                tabIndex={1}
                                 id={value.icon}
                                 value={value.type}
                                 checkedIcon={<CheckCircleRoundedIcon />}
                                 onChange={setSelectedValue}
                               />
-                              <img src={value.icon} />
+                              <img aria-hidden src={value.icon} />
                               <FormLabel
                                 className="text-white text-sm"
                                 htmlFor={value.icon}
@@ -306,8 +330,18 @@ const RideForm = () => {
                       </Box>
                     </RadioGroup>
                   ) : null}
+                  {errors.myowncar ? (
+                    <Typography
+                      aria-live="polite"
+                      className="text-red-600 flex  gap-2 items-center -mt-2 mb-3"
+                    >
+                      <ErrorIcon className="text-sm items-center" /> Invalid
+                      code
+                    </Typography>
+                  ) : null}
                 </Box>
                 <Button
+                  tabIndex={1}
                   type="button"
                   // inputProps={{ "data-testid": "submit" }}
                   onClick={handleSubmit(onSubmit)}

@@ -24,7 +24,7 @@ const SucessBox = (props: Props) => {
   console.log(name[0]);
 
   return (
-    <Box className="w-full flex gap-4 flex-col ml-10 pb-20">
+    <Box aria-live="polite" className="w-full flex gap-4 flex-col ml-10 pb-20">
       <Typography className="text-white font-bold text-5xl mx-auto mb-4">
         {" "}
         <CheckCircleIcon className="text-6xl mb-1 text-[#478426]" />

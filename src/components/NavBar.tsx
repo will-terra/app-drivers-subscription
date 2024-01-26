@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <AppBar data-testid="NavBar" sx={{ background: "#242424" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <img src="Logo.svg" alt="My ride logo"></img>
+        <img aria-hidden src="Logo.svg" alt="My ride logo"></img>
         <Tabs defaultValue={0}>
           <TabsList className="flex gap-10 ">
             <Tab className="text-laranja font-roboto" value={0}>
@@ -24,7 +24,7 @@ const NavBar = () => {
             </Tab>
           </TabsList>
         </Tabs>
-        <img src="header-icons.svg" alt="Notification and User icons"></img>
+        <img aria-hidden src="header-icons.svg" alt="Notification and User icons"></img>
       </Toolbar>
     </AppBar>
   );

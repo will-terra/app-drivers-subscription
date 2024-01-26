@@ -15,7 +15,7 @@ import * as React from "react";
 const HomePage = () => {
   return (
     <Box className="bg-[#242424] flex justify-evenly gap-2 pt-36 pb-20">
-      <img
+      <img aria-hidden
         src="myRideYellowCar.svg"
         alt="a yellow car with the my ride logo on street"
         width="610px"
