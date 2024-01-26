@@ -4,9 +4,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 type Props = {};
 
-const SucessModal = (props: Props) => {
-  const [open, setOpen] = React.useState<boolean>(false);
-
+const SucessBox = (props: Props) => {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -19,7 +17,7 @@ const SucessModal = (props: Props) => {
 
   useEffect(() => {
     async function fetchForm() {
-      const url = "http://localhost:3000/form/";
+      const url = "http://localhost:3000/form/8549";
 
       const response = await fetch(url);
 
@@ -29,6 +27,8 @@ const SucessModal = (props: Props) => {
     }
   }, []);
 
+  // const name = formData.fullname.split(" ");
+  // console.log(name[0]);
   return (
     <Box className="w-full flex gap-4 flex-col ml-10 pb-20">
       <Typography className="text-white font-bold text-5xl mx-auto mb-4">
@@ -62,7 +62,7 @@ const SucessModal = (props: Props) => {
   );
 };
 
-export default SucessModal;
+export default SucessBox;
 
 //   if (!response.ok) {
 //     const error = new Error(

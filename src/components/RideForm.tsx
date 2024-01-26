@@ -68,11 +68,9 @@ const RideForm = () => {
 
   return (
     <Box className="bg-cinzaEscuro py-10">
-                
-
       {isFormSent ? (
         <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
-        <SucessBox />
+          <SucessBox />
         </Box>
       ) : (
         <Box>
@@ -97,6 +95,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Full Name Input"
                   placeholder="Full Name"
+                  inputProps={{ "data-testid": "fullname" }}
                   {...register("fullname")}
                 />
 
@@ -112,6 +111,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Email Adress Input"
                   placeholder="Email Adress"
+                  inputProps={{ "data-testid": "email" }}
                   {...register("email")}
                 />
 
@@ -126,6 +126,7 @@ const RideForm = () => {
                   className="w-full mb-5 text-white"
                   labelId="Country"
                   id="country"
+                  inputProps={{ "data-testid": "country" }}
                   value={country}
                   label="Country"
                   {...register("country")}
@@ -152,6 +153,7 @@ const RideForm = () => {
                   value={city}
                   label="City"
                   placeholder="City"
+                  inputProps={{ "data-testid": "city" }}
                   disabled={country === "" ? true : false}
                   {...register("city")}
                   onChange={(event) => setCity(event?.target.value)}
@@ -176,6 +178,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Referral Code Input"
                   placeholder="Referral Code"
+                  inputProps={{ "data-testid": "referralcode" }}
                   {...register("referralcode")}
                 />
 
@@ -194,6 +197,7 @@ const RideForm = () => {
                     <OrangeSwitch
                       {...label}
                       checked={checked}
+                      inputProps={{ "data-testid": "myowncar" }}
                       {...register("myowncar")}
                       onChange={handleChange}
                     />
@@ -258,7 +262,7 @@ const RideForm = () => {
                                 id={value.icon}
                                 value={value.type}
                                 checkedIcon={<CheckCircleRoundedIcon />}
-                                {...register("cartype")}
+                                label={value.icon}
                                 onChange={setSelectedValue}
                               />
                               <img src={value.icon} />
@@ -277,6 +281,7 @@ const RideForm = () => {
                 </Box>
                 <Button
                   type="button"
+                  // inputProps={{ "data-testid": "submit" }}
                   onClick={handleSubmit(onSubmit)}
                   className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"
                 >
@@ -289,7 +294,6 @@ const RideForm = () => {
         </Box>
       )}
     </Box>
-  
   );
 };
 

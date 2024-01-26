@@ -6,7 +6,6 @@ import WhyChooseMyRide from './components/WhyChooseMyRide'
 
 
 function App() {
-
   return (
     <>
      <NavBar/>

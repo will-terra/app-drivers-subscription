@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+
 export const useRideForm = () => {
   const rideFormSchema = z.object({
     fullname: z.string().trim().min(6).includes(" "),
@@ -53,23 +54,6 @@ export const useRideForm = () => {
       .catch((error) => console.error(error));
   }
 
-  async function fetchForm({ id }) {
-    const url = "http://localhost:3000/plants/" + id;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      const error = new Error("An error occurred while fetching the form data");
-      error.code = response.status;
-      error.info = await response.json();
-      throw error;
-    }
-
-    const formData = await response.json();
-
-    return formData;
-  }
-
   const IconsAndTypes = [
     { icon: "sedan-icon.svg", type: "Sedan" },
     { icon: "suv-van-icon.svg", type: "SUV /Van" },
@@ -80,7 +64,8 @@ export const useRideForm = () => {
   const [selectedValue, setSelectedValue] = React.useState("Sedan");
 
   const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);}
+    setSelectedValue(event.target.value);
+  };
 
   return {
     rideFormSchema,
@@ -95,9 +80,8 @@ export const useRideForm = () => {
     setChecked,
     handleChange,
     updateForm,
-    fetchForm,
     IconsAndTypes,
-    selectedValue, 
+    selectedValue,
     setSelectedValue,
     handleChangeRadio,
   };
