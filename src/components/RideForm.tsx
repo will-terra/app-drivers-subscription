@@ -21,6 +21,7 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Sheet from "@mui/joy/Sheet";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import SucessBox from "./SucessBox.tsx";
+import { updateForm } from "../service/fetcher.ts";
 
 const RideForm = () => {
   const {
@@ -35,8 +36,6 @@ const RideForm = () => {
     checked,
     setChecked,
     handleChange,
-    updateForm,
-    fetchForm,
     IconsAndTypes,
     selectedValue,
     setSelectedValue,
@@ -58,14 +57,14 @@ const RideForm = () => {
   const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
 
   const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
-    updateForm(data); //test
+    const dataWithId = { ...data, id: 1 };
+    updateForm(dataWithId); //test
     setisFormSent(true); //test
   };
 
   const Countries = Object.keys(countriesAndCities);
 
   const [isFormSent, setisFormSent] = useState(false);
-
 
   return (
     <Box className="bg-cinzaEscuro py-10">
@@ -96,7 +95,11 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Full Name Input"
                   placeholder="Full Name"
-                  inputProps={{ "data-testid": "fullname" , "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white	 " }}
+                  inputProps={{
+                    "data-testid": "fullname",
+                    className:
+                      "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white	 ",
+                  }}
                   {...register("fullname")}
                 />
 
@@ -112,7 +115,11 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Email Adress Input"
                   placeholder="Email Adress"
-                  inputProps={{ "data-testid": "email" , "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white" }}
+                  inputProps={{
+                    "data-testid": "email",
+                    className:
+                      "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white",
+                  }}
                   {...register("email")}
                 />
 
@@ -127,7 +134,11 @@ const RideForm = () => {
                   className="w-full mb-5 text-white"
                   labelId="Country"
                   id="country"
-                  inputProps={{ "data-testid": "country", "className": "bg-cinzaForm  text-white rounded outline outline-1 outline-white placeholder-white"}}
+                  inputProps={{
+                    "data-testid": "country",
+                    className:
+                      "bg-cinzaForm  text-white rounded outline outline-1 outline-white placeholder-white",
+                  }}
                   value={country}
                   label="Country"
                   {...register("country")}
@@ -154,7 +165,11 @@ const RideForm = () => {
                   value={city}
                   label="City"
                   placeholder="City"
-                  inputProps={{ "data-testid": "city" ,  "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white"}}
+                  inputProps={{
+                    "data-testid": "city",
+                    className:
+                      "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white",
+                  }}
                   disabled={country === "" ? true : false}
                   {...register("city")}
                   onChange={(event) => setCity(event?.target.value)}
@@ -179,7 +194,11 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Referral Code Input"
                   placeholder="Referral Code"
-                  inputProps={{ "data-testid": "referralcode", "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white"}}
+                  inputProps={{
+                    "data-testid": "referralcode",
+                    className:
+                      "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white",
+                  }}
                   {...register("referralcode")}
                 />
 

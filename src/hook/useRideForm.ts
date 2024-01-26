@@ -29,7 +29,6 @@ export const useRideForm = () => {
     formState,
     formState: { errors },
   } = useForm<rideFormSchemaData>({ resolver: zodResolver(rideFormSchema) });
-  console.log(formState);
 
   const [checked, setChecked] = React.useState(false);
 
@@ -41,18 +40,7 @@ export const useRideForm = () => {
 
   const [city, setCity] = React.useState("");
 
-  function updateForm(data) { //test
-    fetch("http://localhost:3000/form", { 
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error)); //test
-  }
+
 
   const IconsAndTypes = [
     { icon: "sedan-icon.svg", type: "Sedan" },
@@ -79,7 +67,6 @@ export const useRideForm = () => {
     checked,
     setChecked,
     handleChange,
-    updateForm,
     IconsAndTypes,
     selectedValue,
     setSelectedValue,

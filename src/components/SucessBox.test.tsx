@@ -15,4 +15,8 @@ describe("Success Box", () => {
 
     expect(welcomeMessage).toBeInTheDocument();
   });
+
+  it("is getting", async () => {
+      
+  });
 });

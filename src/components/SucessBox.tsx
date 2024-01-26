@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { fetchForm } from "../service/fetcher";
 
 type Props = {};
 
@@ -16,25 +17,18 @@ const SucessBox = (props: Props) => {
   });
 
   useEffect(() => {
-    async function fetchForm() {
-      const url = "http://localhost:3000/form/8549";  //test
-
-      const response = await fetch(url);
-
-      const formData = await response.json();
-
-      return setFormData(formData);  //test
-    }
+    fetchForm().then((data) => setFormData(data));
   }, []);
 
-  // const name = formData.fullname.split(" ");
-  // console.log(name[0]);
+  const name = formData.fullname.split(" ");
+  console.log(name[0]);
+
   return (
     <Box className="w-full flex gap-4 flex-col ml-10 pb-20">
       <Typography className="text-white font-bold text-5xl mx-auto mb-4">
         {" "}
         <CheckCircleIcon className="text-6xl mb-1 text-[#478426]" />
-        &nbsp;Welcome, {formData.fullname}
+        &nbsp;Welcome, {formData.fullname.split(" ")[0]}
       </Typography>
 
       <Typography className="text-white text-2xl">
