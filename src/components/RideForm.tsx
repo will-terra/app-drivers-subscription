@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -20,7 +20,7 @@ import Radio, { radioClasses } from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Sheet from "@mui/joy/Sheet";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import SucessModal from "./SucessModal.tsx";
+import SucessBox from "./SucessBox.tsx";
 
 const RideForm = () => {
   const {
@@ -59,224 +59,237 @@ const RideForm = () => {
 
   const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
     updateForm(data);
+    setisFormSent(true);
   };
 
   const Countries = Object.keys(countriesAndCities);
 
+  const [isFormSent, setisFormSent] = useState(false);
+
   return (
     <Box className="bg-cinzaEscuro py-10">
-      <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
-        <img src="cartoon-car.svg" alt="A cartoon of a yellow card" />
-        <Box className="flex flex-col my-auto">
-          <Typography className="text-laranja font-bold text-[27px]">
-            Drive with MyRide
-          </Typography>
-          <Typography className="text-white">
-            Register as a driver using the form below. Our team will assess and
-            get back to you within 48 hours.
-          </Typography>
+                
+
+      {isFormSent ? (
+        <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
+        <SucessBox />
         </Box>
-      </Box>
-
-      <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-        <form>
-          <Stack>
-            <TextField
-              className="  w-full mb-5 text-laranja bg-cinzaForm  "
-              id="fullname"
-              variant="outlined"
-              aria-label="Full Name Input"
-              placeholder="Full Name"
-              {...register("fullname")}
-            />
-
-            {errors.fullname ? (
-              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
-                <ErrorIcon className="text-sm items-center" /> Invalid name
+      ) : (
+        <Box>
+          <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
+            <img src="cartoon-car.svg" alt="A cartoon of a yellow card" />
+            <Box className="flex flex-col my-auto">
+              <Typography className="text-laranja font-bold text-[27px]">
+                Drive with MyRide
               </Typography>
-            ) : null}
-
-            <TextField
-              className="w-full pb-5 text-white"
-              id="email"
-              variant="outlined"
-              aria-label="Email Adress Input"
-              placeholder="Email Adress"
-              {...register("email")}
-            />
-
-            {errors.email ? (
-              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
-                {" "}
-                <ErrorIcon className="text-sm items-center" /> Invalid email
+              <Typography className="text-white">
+                Register as a driver using the form below. Our team will assess
+                and get back to you within 48 hours.
               </Typography>
-            ) : null}
-
-            <Select
-              className="w-full mb-5 text-white"
-              labelId="Country"
-              id="country"
-              value={country}
-              label="Country"
-              {...register("country")}
-              onChange={(event) => setCountry(event?.target.value)}
-            >
-              {Countries.map((value) => (
-                <MenuItem key={value} value={value}>
-                  {value}
-                </MenuItem>
-              ))}
-            </Select>
-
-            {errors.country ? (
-              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
-                <ErrorIcon className="text-sm items-center" /> Invalid country
-              </Typography>
-            ) : null}
-
-            <Select
-              className="w-full mb-5 text-white  placeholder:text-white"
-              labelId="City"
-              id="city"
-              value={city}
-              label="City"
-              placeholder="City"
-              disabled={country === "" ? true : false}
-              {...register("city")}
-              onChange={(event) => setCity(event?.target.value)}
-            >
-              {country &&
-                countriesAndCities[country].map((value, index) => (
-                  <MenuItem key={index} value={value}>
-                    {value}
-                  </MenuItem>
-                ))}
-            </Select>
-
-            {errors.city ? (
-              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
-                <ErrorIcon className="text-sm items-center" /> Invalid city
-              </Typography>
-            ) : null}
-
-            <TextField
-              className="w-full pb-5 text-white"
-              id="referralcode"
-              variant="outlined"
-              aria-label="Referral Code Input"
-              placeholder="Referral Code"
-              {...register("referralcode")}
-            />
-
-            {errors.referralcode ? (
-              <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
-                <ErrorIcon className="text-sm items-center" /> Invalid code
-              </Typography>
-            ) : null}
-
-            <Box className="flex justify-between flex-col pb-6 ">
-              <Box className="w-full flex justify-between ">
-                <Typography className="text-white">
-                  I drive my own car
-                </Typography>
-
-                <OrangeSwitch
-                  {...label}
-                  checked={checked}
-                  {...register("myowncar")}
-                  onChange={handleChange}
-                />
-              </Box>
-
-              {checked ? (
-                <RadioGroup
-                  aria-label="Your car type select"
-                  defaultValue={selectedValue}
-                  overlay
-                  id="cartype"
-                  {...register("cartype")}
-                  onChange={handleChangeRadio}
-                  sx={{
-                    flexDirection: "row",
-                    gap: 2,
-                    [`& .${radioClasses.checked}`]: {
-                      [`& .${radioClasses.action}`]: {
-                        inset: -1,
-                        border: "3px solid",
-                        borderColor: "#ffffff",
-                      },
-                    },
-                    [`& .${radioClasses.radio}`]: {
-                      display: "contents",
-                      "& > svg": {
-                        zIndex: 2,
-                        position: "absolute",
-                        top: "-8px",
-                        right: "-8px",
-                        bgcolor: "background.surface",
-                        borderRadius: "50%",
-                        color: "#FBA403",
-                      },
-                    },
-                  }}
-                >
-                  <Box className="flex flex-col">
-                    <FormLabel className="pb-4 text-laranja font-medium text-xl">
-                      Select your car type
-                    </FormLabel>
-                    <Box className="flex flex-row gap-5">
-                      {IconsAndTypes.map((value) => (
-                        <Sheet
-                          component="label"
-                          className="bg-cinzaForm w-[147px]"
-                          key={value.type}
-                          variant="outlined"
-                          sx={{
-                            borderRadius: "md",
-
-                            boxShadow: "sm",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            gap: 1.5,
-                            p: 2,
-                            minWidth: 120,
-                          }}
-                        >
-                          <Radio
-                            id={value.icon}
-                            value={value.type}
-                            checkedIcon={<CheckCircleRoundedIcon />}
-                            {...register("cartype")}
-                            onChange={setSelectedValue}
-                          />
-                          <img src={value.icon} />
-                          <FormLabel
-                            className="text-white text-sm"
-                            htmlFor={value.icon}
-                          >
-                            {value.type}
-                          </FormLabel>
-                        </Sheet>
-                      ))}
-                    </Box>
-                  </Box>
-                </RadioGroup>
-              ) : null}
             </Box>
-            <Button
-              type="button"
-              onClick={handleSubmit(onSubmit)}
-              className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"
-            >
-              {" "}
-              Submit
-            </Button>
-          </Stack>
-      
-        </form>
-      </Box>
+          </Box>
+          <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
+            <form>
+              <Stack>
+                <TextField
+                  className="  w-full mb-5 text-laranja bg-cinzaForm  "
+                  id="fullname"
+                  variant="outlined"
+                  aria-label="Full Name Input"
+                  placeholder="Full Name"
+                  {...register("fullname")}
+                />
+
+                {errors.fullname ? (
+                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                    <ErrorIcon className="text-sm items-center" /> Invalid name
+                  </Typography>
+                ) : null}
+
+                <TextField
+                  className="w-full pb-5 text-white"
+                  id="email"
+                  variant="outlined"
+                  aria-label="Email Adress Input"
+                  placeholder="Email Adress"
+                  {...register("email")}
+                />
+
+                {errors.email ? (
+                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                    {" "}
+                    <ErrorIcon className="text-sm items-center" /> Invalid email
+                  </Typography>
+                ) : null}
+
+                <Select
+                  className="w-full mb-5 text-white"
+                  labelId="Country"
+                  id="country"
+                  value={country}
+                  label="Country"
+                  {...register("country")}
+                  onChange={(event) => setCountry(event?.target.value)}
+                >
+                  {Countries.map((value) => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))}
+                </Select>
+
+                {errors.country ? (
+                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                    <ErrorIcon className="text-sm items-center" /> Invalid
+                    country
+                  </Typography>
+                ) : null}
+
+                <Select
+                  className="w-full mb-5 text-white  placeholder:text-white"
+                  labelId="City"
+                  id="city"
+                  value={city}
+                  label="City"
+                  placeholder="City"
+                  disabled={country === "" ? true : false}
+                  {...register("city")}
+                  onChange={(event) => setCity(event?.target.value)}
+                >
+                  {country &&
+                    countriesAndCities[country].map((value, index) => (
+                      <MenuItem key={index} value={value}>
+                        {value}
+                      </MenuItem>
+                    ))}
+                </Select>
+
+                {errors.city ? (
+                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                    <ErrorIcon className="text-sm items-center" /> Invalid city
+                  </Typography>
+                ) : null}
+
+                <TextField
+                  className="w-full pb-5 text-white"
+                  id="referralcode"
+                  variant="outlined"
+                  aria-label="Referral Code Input"
+                  placeholder="Referral Code"
+                  {...register("referralcode")}
+                />
+
+                {errors.referralcode ? (
+                  <Typography className="text-red-600 flex  gap-2 items-center -mt-2 mb-3">
+                    <ErrorIcon className="text-sm items-center" /> Invalid code
+                  </Typography>
+                ) : null}
+
+                <Box className="flex justify-between flex-col pb-6 ">
+                  <Box className="w-full flex justify-between ">
+                    <Typography className="text-white">
+                      I drive my own car
+                    </Typography>
+
+                    <OrangeSwitch
+                      {...label}
+                      checked={checked}
+                      {...register("myowncar")}
+                      onChange={handleChange}
+                    />
+                  </Box>
+
+                  {checked ? (
+                    <RadioGroup
+                      aria-label="Your car type select"
+                      defaultValue={selectedValue}
+                      overlay
+                      id="cartype"
+                      {...register("cartype")}
+                      onChange={handleChangeRadio}
+                      sx={{
+                        flexDirection: "row",
+                        gap: 2,
+                        [`& .${radioClasses.checked}`]: {
+                          [`& .${radioClasses.action}`]: {
+                            inset: -1,
+                            border: "3px solid",
+                            borderColor: "#ffffff",
+                          },
+                        },
+                        [`& .${radioClasses.radio}`]: {
+                          display: "contents",
+                          "& > svg": {
+                            zIndex: 2,
+                            position: "absolute",
+                            top: "-8px",
+                            right: "-8px",
+                            bgcolor: "background.surface",
+                            borderRadius: "50%",
+                            color: "#FBA403",
+                          },
+                        },
+                      }}
+                    >
+                      <Box className="flex flex-col">
+                        <FormLabel className="pb-4 text-laranja font-medium text-xl">
+                          Select your car type
+                        </FormLabel>
+                        <Box className="flex flex-row gap-5">
+                          {IconsAndTypes.map((value) => (
+                            <Sheet
+                              component="label"
+                              className="bg-cinzaForm w-[147px]"
+                              key={value.type}
+                              variant="outlined"
+                              sx={{
+                                borderRadius: "md",
+
+                                boxShadow: "sm",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                gap: 1.5,
+                                p: 2,
+                                minWidth: 120,
+                              }}
+                            >
+                              <Radio
+                                id={value.icon}
+                                value={value.type}
+                                checkedIcon={<CheckCircleRoundedIcon />}
+                                {...register("cartype")}
+                                onChange={setSelectedValue}
+                              />
+                              <img src={value.icon} />
+                              <FormLabel
+                                className="text-white text-sm"
+                                htmlFor={value.icon}
+                              >
+                                {value.type}
+                              </FormLabel>
+                            </Sheet>
+                          ))}
+                        </Box>
+                      </Box>
+                    </RadioGroup>
+                  ) : null}
+                </Box>
+                <Button
+                  type="button"
+                  onClick={handleSubmit(onSubmit)}
+                  className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"
+                >
+                  {" "}
+                  Submit
+                </Button>
+              </Stack>
+            </form>
+          </Box>{" "}
+        </Box>
+      )}
     </Box>
+  
   );
 };
 
