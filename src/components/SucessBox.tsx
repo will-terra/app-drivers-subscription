@@ -43,8 +43,8 @@ const SucessBox = (props: Props) => {
       <Typography className="text-white text-2xl">
         Your referral code is {formData.referralcode}
       </Typography>
-      {formData.myowncar && (
-        <Typography className="text-white text-2xl">
+      {formData.myowncar && ( //test
+        <Typography data-testid="cartype" className="text-white text-2xl">
           You drive a {formData.cartype}
         </Typography>
       )}

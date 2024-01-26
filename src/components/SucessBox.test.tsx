@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { act, render, renderHook } from "@testing-library/react";
+import { act, getByTestId, render, renderHook } from "@testing-library/react";
 import SucessBox from "./SucessBox";
 import { http } from "msw";
 import { server } from "../mocks/server";
-
-// afterEach(() => {
-//   server.resetHandlers();
-// });
+import excludeVariablesFromRoot from "@mui/material/styles/excludeVariablesFromRoot";
 
 describe("Success Box", () => {
   it("renders", async () => {
@@ -16,7 +13,14 @@ describe("Success Box", () => {
     expect(welcomeMessage).toBeInTheDocument();
   });
 
-  it("is getting", async () => {
-      
+  it("render car type", () => {
+    const formData = {
+      myowncar: true,
+    };
+
+    const { getByTestId } = render(<SucessBox />);
+    const carTypeText = getByTestId("cartype");
+
+    expect(carTypeText).toBeInTheDocument();
   });
 });

@@ -55,7 +55,7 @@ const RideForm = () => {
   }));
 
   const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
-    const dataWithId = { ...data, id: 1 };
+    const dataWithId = { ...data, id: 1 }; //test
     updateForm(dataWithId); //test
     setisFormSent(true); //test
   };
@@ -63,6 +63,8 @@ const RideForm = () => {
   const Countries = Object.keys(countriesAndCities);
 
   const [isFormSent, setisFormSent] = useState(false);
+
+  
 
   return (
     <Box className="bg-cinzaEscuro py-10">
@@ -168,10 +170,11 @@ const RideForm = () => {
                   value={city}
                   label="City"
                   placeholder="City"
+                  aria-label="Select your city"
                   inputProps={{
                     "data-testid": "city",
                     className:
-                      "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white",
+                      "bg-cinzaForm h-[24px] text-white rounded outline outline-1 outline-white placeholder-white",
                   }}
                   disabled={country === "" ? true : false}
                   {...register("city")}
