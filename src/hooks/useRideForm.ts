@@ -17,7 +17,7 @@ export const useRideForm = () => {
 
     myowncar: z.boolean(),
 
-    cartype: z.string().min(1),
+    cartype: z.string(),
   });
 
   type rideFormSchemaData = z.infer<typeof rideFormSchema>;
@@ -25,7 +25,6 @@ export const useRideForm = () => {
   const {
     register,
     handleSubmit,
-    formState,
     formState: { errors },
   } = useForm<rideFormSchemaData>({ resolver: zodResolver(rideFormSchema) });
 
@@ -52,8 +51,6 @@ export const useRideForm = () => {
       .catch((error) => console.error(error));
   }
 
-
-
   const IconsAndTypes = [
     { icon: "sedan-icon.svg", type: "Sedan" },
     { icon: "suv-van-icon.svg", type: "SUV /Van" },
@@ -64,7 +61,8 @@ export const useRideForm = () => {
   const [selectedValue, setSelectedValue] = React.useState("Sedan");
 
   const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);}
+    setSelectedValue(event.target.value);
+  };
 
   return {
     rideFormSchema,
@@ -80,7 +78,7 @@ export const useRideForm = () => {
     handleChange,
     updateForm,
     IconsAndTypes,
-    selectedValue, 
+    selectedValue,
     setSelectedValue,
     handleChangeRadio,
   };

@@ -13,13 +13,13 @@ const SucessModal = (props: Props) => {
     country: "",
     city: "",
     referralcode: "",
-    myowncar: false,
+    myowncar: "",
     cartype: "",
   });
 
   useEffect(() => {
     async function fetchForm() {
-      const url = "http://localhost:3000/form/c167";
+      const url = "http://localhost:3000/form/";
 
       const response = await fetch(url);
 
@@ -54,7 +54,7 @@ const SucessModal = (props: Props) => {
           You drive a {formData.cartype}
         </Typography>
       )}
-      
+
       <Typography className="text-laranja font-medium text-3xl mt-14 mx-auto">
         Our team will assess and get back to you within 48 hours.
       </Typography>
