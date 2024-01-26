@@ -20,6 +20,7 @@ import Radio, { radioClasses } from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Sheet from "@mui/joy/Sheet";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import SucessModal from "./SucessModal.tsx";
 
 const RideForm = () => {
   const {
@@ -272,6 +273,7 @@ const RideForm = () => {
               Submit
             </Button>
           </Stack>
+          <SucessModal />
         </form>
       </Box>
     </Box>
