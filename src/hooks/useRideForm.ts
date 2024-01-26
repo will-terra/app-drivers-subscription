@@ -28,7 +28,6 @@ export const useRideForm = () => {
     formState,
     formState: { errors },
   } = useForm<rideFormSchemaData>({ resolver: zodResolver(rideFormSchema) });
-  console.log(formState);
 
   const [checked, setChecked] = React.useState(false);
 
@@ -53,22 +52,7 @@ export const useRideForm = () => {
       .catch((error) => console.error(error));
   }
 
-//   async function fetchForm({ id }) {
-//     const url = "http://localhost:3000/plants/" + id;
 
-//     const response = await fetch(url);
-
-//     if (!response.ok) {
-//       const error = new Error("An error occurred while fetching the form data");
-//       error.code = response.status;
-//       error.info = await response.json();
-//       throw error;
-//     }
-
-//     const formData = await response.json();
-
-//     return formData;
-//   }
 
   const IconsAndTypes = [
     { icon: "sedan-icon.svg", type: "Sedan" },
@@ -95,7 +79,6 @@ export const useRideForm = () => {
     setChecked,
     handleChange,
     updateForm,
-    fetchForm,
     IconsAndTypes,
     selectedValue, 
     setSelectedValue,

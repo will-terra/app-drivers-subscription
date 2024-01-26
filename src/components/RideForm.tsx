@@ -273,7 +273,7 @@ const RideForm = () => {
               Submit
             </Button>
           </Stack>
-          <SucessModal />
+      
         </form>
       </Box>
     </Box>
