@@ -42,7 +42,7 @@ export const useRideForm = () => {
   const [city, setCity] = React.useState("");
 
   function updateForm(data) {
-    fetch("http://localhost:3000/form", {
+    fetch("http://localhost:3000/form", { //test
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -51,7 +51,7 @@ export const useRideForm = () => {
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error)); //test
   }
 
   const IconsAndTypes = [
@@ -64,7 +64,7 @@ export const useRideForm = () => {
   const [selectedValue, setSelectedValue] = React.useState("Sedan");
 
   const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
+    setSelectedValue(event.target.value); //test
   };
 
   return {

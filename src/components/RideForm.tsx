@@ -58,8 +58,8 @@ const RideForm = () => {
   const label = { inputProps: { "aria-label": "I drive my own car checkbox" } };
 
   const onSubmit: SubmitHandler<z.infer<typeof rideFormSchema>> = (data) => {
-    updateForm(data);
-    setisFormSent(true);
+    updateForm(data); //test
+    setisFormSent(true); //test
   };
 
   const Countries = Object.keys(countriesAndCities);

@@ -9,15 +9,10 @@ import { server } from "../mocks/server";
 // });
 
 describe("Success Box", () => {
-  it("formData useState", async () => {
-    // const { findByText } = render(<SucessBox />);
-    // const name = findByText(/william/i);
-    // expect(await name).toBeInTheDocument();
-    // const { result } = renderHook(formData);
-    // act(() => {
-    //   result.current.
-    // })
-    // const NavBarLogo = getByTestId("NavBar");
-    // expect(NavBarLogo).toBeInTheDocument();
+  it("renders", async () => {
+    const { getByText } = render(<SucessBox />);
+    const welcomeMessage = getByText(/welcome/i);
+
+    expect(welcomeMessage).toBeInTheDocument();
   });
 });

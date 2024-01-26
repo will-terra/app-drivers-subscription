@@ -5,7 +5,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 type Props = {};
 
 const SucessBox = (props: Props) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ //test
     fullname: "",
     email: "",
     country: "",
@@ -29,7 +29,7 @@ const SucessBox = (props: Props) => {
 
   // const name = formData.fullname.split(" ");
   // console.log(name[0]);
-  return (
+  return ( //test
     <Box className="w-full flex gap-4 flex-col ml-10 pb-20">
       <Typography className="text-white font-bold text-5xl mx-auto mb-4">
         {" "}
