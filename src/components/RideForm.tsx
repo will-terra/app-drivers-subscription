@@ -72,7 +72,7 @@ const RideForm = () => {
         </Box>
       ) : (
         <Box>
-          <Box className="flex pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
+          <Box className="flex flex-col md:flex-row pt-10  gap-5 bg-cinzaForm mx-20 pl-10">
             <img
               aria-hidden
               src="cartoon-car.svg"
@@ -89,7 +89,7 @@ const RideForm = () => {
             </Box>
           </Box>
           <Box component="div" className=" mx-20 py-5 px-8 bg-cinzaForm ">
-            <form tabIndex={1}>
+            <form tabIndex={0}>
               <Stack>
                 <TextField
                   className="  w-full mb-5 text-laranja bg-cinzaForm  "
@@ -115,7 +115,7 @@ const RideForm = () => {
                 ) : null}
 
                 <TextField
-                  tabIndex={1}
+                  tabIndex={0}
                   className="w-full pb-5 text-white"
                   id="email"
                   variant="outlined"
@@ -140,7 +140,7 @@ const RideForm = () => {
                 ) : null}
 
                 <Select
-                  tabIndex={1}
+                  tabIndex={0}
                   className="w-full mb-5 text-white"
                   aria-label="Select your country"
                   label="Country"
@@ -172,7 +172,7 @@ const RideForm = () => {
                 ) : null}
 
                 <Select
-                  tabIndex={1}
+                  tabIndex={0}
                   className="w-full mb-5 text-white  placeholder:text-white"
                   labelId="City"
                   id="city"
@@ -207,7 +207,7 @@ const RideForm = () => {
                 ) : null}
 
                 <TextField
-                  tabIndex={1}
+                  tabIndex={0}
                   className="w-full pb-5 text-white"
                   id="referralcode"
                   variant="outlined"
@@ -241,7 +241,7 @@ const RideForm = () => {
                     </Typography>
 
                     <OrangeSwitch
-                      tabIndex={1}
+                      tabIndex={0}
                       label="myowncar"
                       checked={checked}
                       inputProps={{
@@ -254,7 +254,7 @@ const RideForm = () => {
                   </Box>
 
                   {checked ? (
-                    <RadioGroup
+                    <RadioGroup 
                       aria-live="polite"
                       aria-label="Your car type select"
                       defaultValue={selectedValue}
@@ -290,7 +290,7 @@ const RideForm = () => {
                         <FormLabel className="pb-4 text-laranja font-medium text-xl">
                           Select your car type
                         </FormLabel>
-                        <Box className="flex flex-row gap-5">
+                        <Box className="flex flex-col md:flex-row gap-5">
                           {IconsAndTypes.map((value) => (
                             <Sheet
                               component="label"
@@ -311,7 +311,7 @@ const RideForm = () => {
                             >
                               <Radio
                                 // aria-label={`Radio select ${value.type}`}
-                                tabIndex={1}
+                                tabIndex={0}
                                 id={value.icon}
                                 value={value.type}
                                 checkedIcon={<CheckCircleRoundedIcon />}
@@ -341,7 +341,7 @@ const RideForm = () => {
                   ) : null}
                 </Box>
                 <Button
-                  tabIndex={1}
+                  tabIndex={0}
                   type="button"
                   // inputProps={{ "data-testid": "submit" }}
                   onClick={handleSubmit(onSubmit)}

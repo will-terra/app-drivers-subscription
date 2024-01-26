@@ -5,7 +5,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <Box className="bg-cinzaEscuro pt-16 pb-10 px-24 flex gap-28">
+    <Box className="bg-cinzaEscuro pt-16 pb-10 px-24 flex gap-28 flex-col md:flex-row">
       <Box>
         <img src="footer-logo.svg" alt="My ride logo" />
         <Typography className="text-cinzaText mt-4">
@@ -13,8 +13,8 @@ const Footer = (props: Props) => {
         </Typography>
         <img className="mt-6" src="social-media.svg" alt="Social media icons" />
       </Box>
-      <Box className="flex gap-24">
-        <Box>
+      <Box className="flex gap-24 flex-col md:flex-row">
+        <Box >
             <Typography className="text-white font-medium text-xl mb-4"> Company</Typography>
             <Typography className="text-white mb-2"> Abouts Us</Typography>
             <Typography className="text-white  mb-2"> News</Typography>

@@ -20,7 +20,7 @@ const WhyChooseMyRide = (props: Props) => {
       <Typography className="mx-auto mb-10 text-white font-bold text-[45px]">
         Best in class rides
       </Typography>
-      <Box className="flex gap-10 mx-auto">
+      <Box className="flex gap-10 mx-auto flex flex-col md:flex-row">
 
         <Card className="w-[307px] bg-cinzaCards pb-2" >
           <CardMedia
@@ -44,7 +44,7 @@ const WhyChooseMyRide = (props: Props) => {
         </Card>
 
 
-        <Card className="w-[307px] bg-cinzaCards pb-2" >
+        <Card className="w-[307px] bg-cinzaCards pb-2 " >
           <CardMedia
             sx={{ height: 214 }}
             image="comfort-car.svg"

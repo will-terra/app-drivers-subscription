@@ -15,7 +15,7 @@ import * as React from "react";
 const HomePage = () => {
   return (
     <Box className="bg-[#242424] flex justify-evenly gap-2 pt-36 pb-20">
-      <img aria-hidden
+      <img aria-hidden className="hidden md:flex"
         src="myRideYellowCar.svg"
         alt="a yellow car with the my ride logo on street"
         width="610px"
@@ -55,7 +55,7 @@ const HomePage = () => {
           </Typography>
         </Box>
 
-        <FormGroup className="bg-[#2c2c2c] py-6 px-5 w-[610px]">
+        <FormGroup className="bg-[#2c2c2c] py-6 px-5 md:w-[610px]">
           <FormLabel className="text-white font-bold text-base mb-2">
             Find a ride now
           </FormLabel>

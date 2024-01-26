@@ -5,9 +5,9 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <AppBar data-testid="NavBar" sx={{ background: "#242424" }}>
+    <AppBar className="bg-cinzaEscuro hidden md:flex" data-testid="NavBar">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <img aria-hidden src="Logo.svg" alt="My ride logo"></img>
+        <img  aria-hidden src="Logo.svg" alt="My ride logo"></img>
         <Tabs defaultValue={0}>
           <TabsList className="flex gap-10 ">
             <Tab className="text-laranja font-roboto" value={0}>
