@@ -66,6 +66,7 @@ const RideForm = () => {
 
   const [isFormSent, setisFormSent] = useState(false);
 
+
   return (
     <Box className="bg-cinzaEscuro py-10">
       {isFormSent ? (
@@ -95,7 +96,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Full Name Input"
                   placeholder="Full Name"
-                  inputProps={{ "data-testid": "fullname" }}
+                  inputProps={{ "data-testid": "fullname" , "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white	 " }}
                   {...register("fullname")}
                 />
 
@@ -111,7 +112,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Email Adress Input"
                   placeholder="Email Adress"
-                  inputProps={{ "data-testid": "email" }}
+                  inputProps={{ "data-testid": "email" , "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white" }}
                   {...register("email")}
                 />
 
@@ -126,7 +127,7 @@ const RideForm = () => {
                   className="w-full mb-5 text-white"
                   labelId="Country"
                   id="country"
-                  inputProps={{ "data-testid": "country" }}
+                  inputProps={{ "data-testid": "country", "className": "bg-cinzaForm  text-white rounded outline outline-1 outline-white placeholder-white"}}
                   value={country}
                   label="Country"
                   {...register("country")}
@@ -153,7 +154,7 @@ const RideForm = () => {
                   value={city}
                   label="City"
                   placeholder="City"
-                  inputProps={{ "data-testid": "city" }}
+                  inputProps={{ "data-testid": "city" ,  "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white"}}
                   disabled={country === "" ? true : false}
                   {...register("city")}
                   onChange={(event) => setCity(event?.target.value)}
@@ -178,7 +179,7 @@ const RideForm = () => {
                   variant="outlined"
                   aria-label="Referral Code Input"
                   placeholder="Referral Code"
-                  inputProps={{ "data-testid": "referralcode" }}
+                  inputProps={{ "data-testid": "referralcode", "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white"}}
                   {...register("referralcode")}
                 />
 
@@ -262,7 +263,6 @@ const RideForm = () => {
                                 id={value.icon}
                                 value={value.type}
                                 checkedIcon={<CheckCircleRoundedIcon />}
-                                label={value.icon}
                                 onChange={setSelectedValue}
                               />
                               <img src={value.icon} />
@@ -283,7 +283,7 @@ const RideForm = () => {
                   type="button"
                   // inputProps={{ "data-testid": "submit" }}
                   onClick={handleSubmit(onSubmit)}
-                  className="bg-[#FBA403] max-w-[200px] h-[56px] text-white"
+                  className="bg-[#FBA403] max-w-[200px] h-[56px] text-white "
                 >
                   {" "}
                   Submit

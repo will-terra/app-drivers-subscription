@@ -65,6 +65,7 @@ const HomePage = () => {
           <Select
             className="text-white mb-2  border-white"
             labelId="your pickup"
+
             id="your-pickup"
             value={0}
             label="your-pickup"
@@ -73,6 +74,8 @@ const HomePage = () => {
           </Select>
           <TextField
             className="text-white mb-2  border-white focus:border-[FBA403]"
+            inputProps={{  "className": "bg-cinzaForm h-[36px] text-white rounded outline outline-1 outline-white placeholder-white	" }}
+
             sx={{ color: "#FFFFFF !important" }}
             id="outlined-basic"
             label="Your Destination"
