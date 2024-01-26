@@ -9,6 +9,7 @@ export default {
         cinzaEscuro: "#242424",
         cinzaCards: "#383838",
         cinzaForm: "#282828",
+        cinzaText: "#B3B3B3"
       },
 
       fontFamily: {

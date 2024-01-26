@@ -41,8 +41,8 @@ export const useRideForm = () => {
 
   const [city, setCity] = React.useState("");
 
-  function updateForm(data) {
-    fetch("http://localhost:3000/form", { //test
+  function updateForm(data) { //test
+    fetch("http://localhost:3000/form", { 
       method: "POST",
       body: JSON.stringify(data),
       headers: {

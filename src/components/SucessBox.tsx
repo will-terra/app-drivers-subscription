@@ -5,7 +5,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 type Props = {};
 
 const SucessBox = (props: Props) => {
-  const [formData, setFormData] = useState({ //test
+  const [formData, setFormData] = useState({
     fullname: "",
     email: "",
     country: "",
@@ -17,19 +17,19 @@ const SucessBox = (props: Props) => {
 
   useEffect(() => {
     async function fetchForm() {
-      const url = "http://localhost:3000/form/8549";
+      const url = "http://localhost:3000/form/8549";  //test
 
       const response = await fetch(url);
 
       const formData = await response.json();
 
-      return setFormData(formData);
+      return setFormData(formData);  //test
     }
   }, []);
 
   // const name = formData.fullname.split(" ");
   // console.log(name[0]);
-  return ( //test
+  return (
     <Box className="w-full flex gap-4 flex-col ml-10 pb-20">
       <Typography className="text-white font-bold text-5xl mx-auto mb-4">
         {" "}

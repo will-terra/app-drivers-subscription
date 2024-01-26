@@ -1,4 +1,5 @@
 
+import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
 import RideForm from './components/RideForm'
@@ -12,6 +13,7 @@ function App() {
      <HomePage/>
      <WhyChooseMyRide/>
      <RideForm/>
+     <Footer/>
      
     </>
   )
